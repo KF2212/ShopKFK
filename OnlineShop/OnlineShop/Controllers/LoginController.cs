@@ -1,4 +1,5 @@
 ﻿using DAL.ViewModels;
+using Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ namespace OnlineShop.Controllers
 {
     [Route("[controller]")]
     public class LoginController : Controller
-    {   
+    {
         [Route("/")]
         public IActionResult Login()
         {
@@ -17,6 +18,11 @@ namespace OnlineShop.Controllers
         //{
         //    //return PasswordValidator
         //}
+        [HttpPost]
+        public IActionResult MainPage(UserViewModel userViewModel)
+        {
+            return View(userViewModel);
+        }
         [Route("errorMessage")]
         public BadRequestResult ErrorMessage()
         {
