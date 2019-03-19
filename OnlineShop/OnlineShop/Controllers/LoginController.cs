@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
 
 namespace OnlineShop.Controllers
 {
@@ -14,10 +16,17 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
-        //public ViewResult MainPage(UserViewModel user)
-        //{
-        //    //return PasswordValidator
-        //}
+        [Route("Jeans")]
+        public IActionResult Product()
+        {
+            return View();
+        }
+        [Route("MainPage")]
+        public IActionResult MainPage()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult MainPage(UserViewModel userViewModel)
         {
@@ -28,13 +37,6 @@ namespace OnlineShop.Controllers
         {
             return BadRequest();
         }
-        //[HttpPost]
-        //public async Task<HttpResponseMessage> Foo()
-        //{
-        //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "naughty");
-        //    response.Content = new StringContent("Naughty");
-
-        //    return response;
-        //}
+       
     }
 }

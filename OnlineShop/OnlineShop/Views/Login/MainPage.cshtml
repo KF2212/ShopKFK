@@ -1,9 +1,11 @@
 ﻿@model DAL.ViewModels.UserViewModel
-<head>
-    <link rel="stylesheet" type="text/css" href="~/css/Login.css">
-</head>
-<div class="container">
-        <h2>Carousel Example</h2>
+@{
+    Layout = "_Layout";
+}
+<link rel="stylesheet" type="text/css" href="~/css/Login.css">
+
+    <div class="container">
+        <h2 class="text-center , text">KaFSHOP</h2>
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -37,9 +39,54 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-</div>
-<div class="container1">
-    <h1 class="text-center">Najczęście kupowane</h1>
-    <div class="col-md-4-products">
-        <a>
-</div> 
+    </div>
+    <div class="container1">
+        <h1 class="text-center">Najczęście kupowane</h1>
+        <!-- first product -->
+        <div class="col-md-4 product-grid">
+            <div class="image">
+                <a href="@Url.Action("Jeans", "Login")">
+                    <img src="~/images/mały.jpg" class="img-rounded , img-responsive center-block" alt="Cinque Terre" width="304" height="236">
+                    <div class="overlay">
+                        <div class="info">Get more info</div>
+                    </div>
+                </a>
+            </div>
+            <h4 class="text-center">Shop</h4>
+            <h5 class="text-center">Cena: 50</h5>
+            <a href="@Url.Action("Jeans", "Login")" class="btn buy">BUY</a>
+
+        </div>
+        <!-- second product -->
+
+        <div class="col-md-4 product-grid">
+            <div class="image">
+                <a href="#">
+                    <img src="~/images/black-friday-fashion-friends-1345082.jpg" class="img-rounded , img-responsive center-block" alt="Cinque Terre" width="304" height="236">
+                    <div class="overlay">
+                        <div class="info">Get more info</div>
+                    </div>
+                </a>
+            </div>
+            <h4 class="text-center">Shop</h4>
+            <h5 class="text-center">Cena: 50</h5>
+            <a href="@Url.Action("Login", "Login")" class="btn buy">BUY</a>
+
+        </div>
+        <!-- third product -->
+        <div class="col-md-4 product-grid">
+            <div class="image">
+                <a href="#">
+                    <img src="~/images/black-friday-fashion-friends-1345082.jpg" class="img-rounded , img-responsive center-block" alt="Cinque Terre" width="304" height="236">
+                    <div class="overlay">
+                        <div class="info">Get more info</div>
+                    </div>
+                </a>
+            </div>
+            <h4 class="text-center">Shop</h4>
+            <h5 class="text-center">Cena: 50</h5>
+            <a href="#" class="btn buy">BUY</a>
+
+        </div>
+    </div>
+
