@@ -21,11 +21,6 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
-        [Route("Jeans")]
-        public IActionResult Product()
-        {
-            return View();
-        }
         [Route("MainPage")]
         public IActionResult MainPage()
         {

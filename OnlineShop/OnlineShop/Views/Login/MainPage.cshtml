@@ -44,7 +44,7 @@
         <!-- first product -->
         <div class="col-md-4 product-grid">
             <div class="image">
-                <a href="@Url.Action("Jeans", "Login")">
+                <a href="@Url.Action("Product", "Product")">
                     <img src="~/images/mały.jpg" class="img-rounded , img-responsive center-block" alt="Cinque Terre" width="304" height="236">
                     <div class="overlay">
                         <div class="info">Get more info</div>
@@ -53,7 +53,7 @@
             </div>
             <h4 class="text-center">Shop</h4>
             <h5 class="text-center">Cena: 50</h5>
-            <a href="@Url.Action("Jeans", "Login")" class="btn buy">BUY</a>
+            <a href="@Url.Action("Product", "Product", new { id = 10 })" class="btn buy">BUY</a>
 
         </div>
         <!-- second product -->
@@ -69,7 +69,7 @@
             </div>
             <h4 class="text-center">Shop</h4>
             <h5 class="text-center">Cena: 50</h5>
-            <a href="@Url.Action("Login", "Login")" class="btn buy">BUY</a>
+            <a href="@Url.Action("Product", "Product")" class="btn buy">BUY</a>
 
         </div>
         <!-- third product -->
