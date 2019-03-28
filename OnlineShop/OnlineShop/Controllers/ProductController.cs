@@ -14,6 +14,9 @@ namespace OnlineShop.Controllers
             return View();
         }
 
+    /*  [Route("")]
+        [Route("index")]
+        [Route("~/")]*/
         [HttpGet]
         public IActionResult Product(int id)
         {
@@ -23,9 +26,11 @@ namespace OnlineShop.Controllers
                 Name = "Jeansy",
                 Size = Helpers.Sizes.M,
                 Description = "Lorem ipsum",
+                Price = 159,
                 Id = id,
                 Color = Helpers.Colors.Black
             };
+            ViewBag.products = ProductViewModel.findAll();
             return View(viewModel);
         }
 
