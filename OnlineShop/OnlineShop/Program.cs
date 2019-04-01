@@ -7,13 +7,40 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using OnlineShop.Models;
 
 namespace OnlineShop
 {
     public class Program
     {
+        public static List<ProductViewModel> Products { get; set; }
+
+        private static void PopulateProduct()
+        {
+            Products = new List<ProductViewModel>();
+            Products.Add(new ProductViewModel
+            {
+                Name = "Jeansy",
+                Size = Helpers.Sizes.M,
+                Description = "Lorem ipsum",
+                Price = 159,
+                Id = 1,
+                Color = Helpers.Colors.Black
+            });
+            Products.Add(new ProductViewModel
+            {
+                Name = "Top",
+                Size = Helpers.Sizes.S,
+                Description = "Lorem ipsum",
+                Price = 79,
+                Id = 2,
+                Color = Helpers.Colors.White
+            });
+        }
+
         public static void Main(string[] args)
         {
+            PopulateProduct();
             CreateWebHostBuilder(args).Build().Run();
         }
 

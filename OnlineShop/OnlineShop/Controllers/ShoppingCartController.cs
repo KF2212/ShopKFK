@@ -16,61 +16,46 @@ namespace OnlineShop.Controllers
         [Route("index")]
         public IActionResult Index()
         {
-            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            var cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");
             ViewBag.cart = cart;
             ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
             return View();
         }
 
         [Route("buy/{id}")]
-        public IActionResult Buy(string id)
+        public IActionResult Buy(int id)
         {
-            ProductViewModel productViewModel = new ProductViewModel();
-            if (SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart") == null)
+            //TODO: Get poduct by ID from DB
+            ProductViewModel productViewModel = Program.Products.FirstOrDefault(x => x.Id == id);
+
+            List<ShoppingCartItem> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart") ?? new List<ShoppingCartItem>();
+            if(cart.Any(x=>x.Product.Id == id))
             {
-                List<Item> cart = new List<Item>();
-                cart.Add(new Item { Product = productViewModel.find(id), Quantity = 1 });
-                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                cart.First(x => x.Product.Id == id).Quantity++;
             }
             else
             {
-                List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-                int index = isExist(id);
-                if (index != -1)
-                {
-                    cart[index].Quantity++;
-                }
-                else
-                {
-                    cart.Add(new Item { Product = productViewModel.find(id), Quantity = 1 });
-                }
-                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                cart.Add(new ShoppingCartItem { Product = productViewModel, Quantity = 1 });
             }
-            return RedirectToAction("Index");
-        }
-
-        [Route("remove/{id}")]
-        public IActionResult Remove(string id)
-        {
-            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-            int index = isExist(id);
-            cart.RemoveAt(index);
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             return RedirectToAction("Index");
         }
 
-        private int isExist(string id)
+        [Route("remove/{id}")]
+        public IActionResult Remove(int id)
         {
-            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-            for (int i = 0; i < cart.Count; i++)
+            List<ShoppingCartItem> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart") ?? new List<ShoppingCartItem>();
+            ShoppingCartItem item = cart.FirstOrDefault(x => x.Product.Id == id);
+            if(item != null)
             {
-                if (cart[i].Product.Id.Equals(id))
+                item.Quantity--;
+                if(item.Quantity == 0)
                 {
-                    return i;
+                    cart.RemoveAll(x => x.Product.Id == id);
                 }
             }
-            return -1;
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            return RedirectToAction("Index");
         }
-
     }
 }

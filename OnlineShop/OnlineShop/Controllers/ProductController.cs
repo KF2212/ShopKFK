@@ -20,24 +20,14 @@ namespace OnlineShop.Controllers
         [HttpGet]
         public IActionResult Product(int id)
         {
-            //Add logic to fetch data from DB
-            ProductViewModel viewModel = new ProductViewModel
-            {
-                Name = "Jeansy",
-                Size = Helpers.Sizes.M,
-                Description = "Lorem ipsum",
-                Price = 159,
-                Id = id,
-                Color = Helpers.Colors.Black
-            };
-            ViewBag.products = ProductViewModel.findAll();
+            ProductViewModel viewModel = Program.Products.FirstOrDefault(x => x.Id == id);
             return View(viewModel);
         }
 
         [HttpPost]
         public IActionResult AddProduct(ProductViewModel viewModel)
         {
-            return Json(new { Success = true });
+            return RedirectToAction("Buy", "ShoppingCart", new { id = viewModel.Id });
         }
     }
 }

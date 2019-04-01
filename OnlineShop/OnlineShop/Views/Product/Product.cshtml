@@ -27,17 +27,20 @@
     <div>
         <div class="col-md-6 description">
             <div class="container">
-                @Html.HiddenFor(model => model.Id)
-                <h1>@Model.Name</h1>
-                <h2>@Model.Description</h2>
-                @Html.DropDownListFor(model => model.Size, Model.SizeSelectList, "Please select", new { style = "color: #000;" })
-                @Html.DropDownListFor(model => model.Color, Model.ColorSelectList, "Please select", new { style = "color: #000;" })
-                <div class="row">
-                    <div class="col-md-6">
-                        <a class="tabela" href="#"><img src="~/images/converse-fashion-footwear-52574.jpg" class="zdj_jak_mierz"><span><img src="~/images/converse-fashion-footwear-52574.jpg" width="498" height="498"></span></a>
+                @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post))
+                {
+                    @Html.HiddenFor(model => model.Id)
+                    <h1>@Model.Name</h1>
+                    <h2>@Model.Description</h2>
+                    @Html.DropDownListFor(model => model.Size, Model.SizeSelectList, "Please select", new { style = "color: #000;" })
+                            @Html.DropDownListFor(model => model.Color, Model.ColorSelectList, "Please select", new { style = "color: #000;" })
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a class="tabela" href="#"><img src="~/images/converse-fashion-footwear-52574.jpg" class="zdj_jak_mierz"><span><img src="~/images/converse-fashion-footwear-52574.jpg" width="498" height="498"></span></a>
+                        </div>
                     </div>
-                </div>
-                <input class="btn-primary" type="button" value="Dodaj do koszyka" onclick="AddToCart()" />
+                    <input class="btn-primary" type="submit" value="Dodaj do koszyka" />
+                }
             </div>
         </div>
         <div col-md-6>

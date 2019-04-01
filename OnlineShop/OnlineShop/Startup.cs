@@ -31,12 +31,9 @@ namespace OnlineShop
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
-                //dodawanie sesji ?
-                services.AddMvc();
-                services.AddSession();
             });
-
-
+            //dodawanie sesji ?
+            services.AddSession();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
