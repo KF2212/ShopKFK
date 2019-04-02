@@ -13,7 +13,7 @@ namespace OnlineShop.Controllers
     [Route("cart")]
     public class ShoppingCartController : Controller
     {
-        [Route("index")]
+        [Route("")]
         public IActionResult Index()
         {
             var cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");

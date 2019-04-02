@@ -17,26 +17,30 @@ namespace OnlineShop.Controllers
     public class LoginController : Controller
     {
         [Route("/")]
+        [HttpGet]
         public IActionResult Login()
-        {
-            return View();
-        }
-        [Route("MainPage")]
-        public IActionResult MainPage()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult MainPage(UserViewModel userViewModel)
+        public IActionResult Login(UserViewModel userViewModel)
         {
-            return View(userViewModel);
+            //TODO: Validate userViewModel against database
+            bool isValid = true;
+            if(isValid)
+            {
+                return RedirectToAction("MainPage", "Home");
+            }
+            return View();
         }
+        
         [Route("errorMessage")]
         public BadRequestResult ErrorMessage()
         {
             return BadRequest();
         }
+
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)

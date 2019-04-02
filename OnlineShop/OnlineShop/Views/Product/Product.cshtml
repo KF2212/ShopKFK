@@ -18,8 +18,12 @@
             },
             type: "POST"
         }).done(function () {
-            alert("wyslano!");
+            $("#goToCartPopup").modal();
         });
+    }
+
+    function GoToCart() {
+        window.location.href = "/cart";
     }
 </script>
 
@@ -27,20 +31,17 @@
     <div>
         <div class="col-md-6 description">
             <div class="container">
-                @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post))
-                {
-                    @Html.HiddenFor(model => model.Id)
-                    <h1>@Model.Name</h1>
-                    <h2>@Model.Description</h2>
-                    @Html.DropDownListFor(model => model.Size, Model.SizeSelectList, "Please select", new { style = "color: #000;" })
-                            @Html.DropDownListFor(model => model.Color, Model.ColorSelectList, "Please select", new { style = "color: #000;" })
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a class="tabela" href="#"><img src="~/images/converse-fashion-footwear-52574.jpg" class="zdj_jak_mierz"><span><img src="~/images/converse-fashion-footwear-52574.jpg" width="498" height="498"></span></a>
-                        </div>
+                @Html.HiddenFor(model => model.Id)
+                <h1>@Model.Name</h1>
+                <h2>@Model.Description</h2>
+                @Html.DropDownListFor(model => model.Size, Model.SizeSelectList, "Please select", new { style = "color: #000;" })
+                @Html.DropDownListFor(model => model.Color, Model.ColorSelectList, "Please select", new { style = "color: #000;" })
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="tabela" href="#"><img src="~/images/converse-fashion-footwear-52574.jpg" class="zdj_jak_mierz"><span><img src="~/images/converse-fashion-footwear-52574.jpg" width="498" height="498"></span></a>
                     </div>
-                    <input class="btn-primary" type="submit" value="Dodaj do koszyka" />
-                }
+                </div>
+                <input class="btn-primary" type="button" value="Dodaj do koszyka" onclick="AddToCart()" />
             </div>
         </div>
         <div col-md-6>
@@ -54,57 +55,25 @@
             </div>
         </div>
     </div>
-    @*<div class="text-center">
-            <h1>Zobacz podobne</h1>
-        </div>*@
-    <div class="container1">
-        @*<h1 class="text-center">Najczęście kupowane</h1>*@
-        <!-- first product -->
-        <div class="col-md-4 product-grid">
-            <div class="image">
-                <a href="@Url.Action("Jeans", "Login")">
-                    <img src="~/images/mały.jpg" class="img-rounded , img-responsive center-block" alt="Cinque Terre" width="304" height="236">
-                    <div class="overlay">
-                        <div class="info">Get more info</div>
-                    </div>
-                </a>
+    <div class="modal fade" id="goToCartPopup" role="dialog">
+        <div class="modal-dialog" style="background-color: white">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Dodano do koszyka</h4>
             </div>
-            <h4 class="text-center">Shop</h4>
-            <h5 class="text-center">Cena: 50</h5>
-            <a href="@Url.Action("Jeans", "Login")" class="btn buy">BUY</a>
-
-        </div>
-        <!-- second product -->
-
-        <div class="col-md-4 product-grid">
-            <div class="image">
-                <a href="#">
-                    <img src="~/images/black-friday-fashion-friends-1345082.jpg" class="img-rounded , img-responsive center-block" alt="Cinque Terre" width="304" height="236">
-                    <div class="overlay">
-                        <div class="info">Get more info</div>
-                    </div>
-                </a>
+            <div class="modal-body">
+                <p>Czy chcesz kontynuować zakupy?</p>
             </div>
-            <h4 class="text-center">Shop</h4>
-            <h5 class="text-center">Cena: 50</h5>
-            <a href="@Url.Action("Login", "Login")" class="btn buy">BUY</a>
-
-        </div>
-        <!-- third product -->
-        <div class="col-md-4 product-grid">
-            <div class="image">
-                <a href="#">
-                    <img src="~/images/black-friday-fashion-friends-1345082.jpg" class="img-rounded , img-responsive center-block" alt="Cinque Terre" width="304" height="236">
-                    <div class="overlay">
-                        <div class="info">Get more info</div>
-                    </div>
-                </a>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Kontynuuj zakupy</button>
+                <button type="button" class="btn" onclick="GoToCart()">Do koszyka</button>
             </div>
-            <h4 class="text-center">Shop</h4>
-            <h5 class="text-center">Cena: 50</h5>
-            <a href="#" class="btn buy">BUY</a>
-
         </div>
     </div>
+            @*<div class="text-center">
+                <h1>Zobacz podobne</h1>
+            </div>*@
+            @Html.Partial("_SuggestedProducts")
+
 
 </body>
