@@ -36,6 +36,15 @@ namespace OnlineShop
                 Id = 2,
                 Color = Helpers.Colors.White
             });
+            Products.Add(new ProductViewModel
+            {
+                Name = "Buty",
+                Size = Helpers.Sizes.L,
+                Description = "Lorem ipsum",
+                Price = 379,
+                Id = 3,
+                Color = Helpers.Colors.White
+            });
         }
 
         public static void Main(string[] args)

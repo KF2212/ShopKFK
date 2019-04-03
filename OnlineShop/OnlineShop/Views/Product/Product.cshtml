@@ -70,10 +70,11 @@
             </div>
         </div>
     </div>
-            @*<div class="text-center">
-                <h1>Zobacz podobne</h1>
-            </div>*@
-            @Html.Partial("_SuggestedProducts")
+    @*<div class="text-center">
+            <h1>Zobacz podobne</h1>
+        </div>*@
+
+    @await Component.InvokeAsync("SuggestedProducts")
 
 
 </body>
