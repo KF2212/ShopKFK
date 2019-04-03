@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace OnlineShop.Controllers
+namespace OnlineShop.Models
 {
     public class User : IdentityUser
     {

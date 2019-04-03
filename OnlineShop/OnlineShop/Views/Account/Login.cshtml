@@ -2,8 +2,10 @@
 @{
     ViewBag.Title = "Login";
 }
+@{
+    Layout = "_Layout";
+}
 <h2>Login</h2>
-
 <form method="post" asp-controller="Account" asp-action="Login"
       asp-route-returnurl="@Model.ReturnUrl">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>

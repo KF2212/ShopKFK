@@ -12,13 +12,11 @@ namespace OnlineShop.Controllers
     {
         private SignInManager<User> _signManager;
         private UserManager<User> _userManager;
-
         public AccountController(UserManager<User> userManager, SignInManager<User> signManager)
         {
             _userManager = userManager;
             _signManager = signManager;
         }
-
         [HttpGet]
         public ViewResult Register()
         {
@@ -36,7 +34,7 @@ namespace OnlineShop.Controllers
                 if (result.Succeeded)
                 {
                     await _signManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {
@@ -60,6 +58,11 @@ namespace OnlineShop.Controllers
             var model = new LoginViewModel { ReturnUrl = returnUrl };
             return View(model);
         }
+
+        public IActionResult MainPage()
+        {
+            return View();
+        }
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -76,7 +79,7 @@ namespace OnlineShop.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("MainPage", "Account");
                     }
                 }
             }
