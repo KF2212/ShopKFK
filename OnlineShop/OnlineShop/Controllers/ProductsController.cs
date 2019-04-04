@@ -23,7 +23,11 @@ namespace OnlineShop.Controllers
         {
             return View(await _context.Products.ToListAsync());
         }
-
+        // GET: Products/Show
+        public async Task<IActionResult> Show()
+        {
+            return View(await _context.Products.ToListAsync());
+        }
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
