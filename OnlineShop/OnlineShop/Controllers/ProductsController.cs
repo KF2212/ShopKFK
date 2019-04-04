@@ -24,9 +24,16 @@ namespace OnlineShop.Controllers
             return View(await _context.Products.ToListAsync());
         }
         // GET: Products/Show
-        public async Task<IActionResult> Show()
+        public async Task<IActionResult> Show(string genre)
         {
-            return View(await _context.Products.ToListAsync());
+            var products =await _context.Products.Where(m => m.Name == genre).ToListAsync();
+            
+            if (products == null || genre == null)
+            {
+                return NotFound();
+            }
+            ViewData["Genre"] = genre;
+            return View(products);
         }
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
