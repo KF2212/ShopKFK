@@ -38,7 +38,7 @@ namespace OnlineShop.Controllers
             {
                 return NotFound();
             }
-
+            
             return View(productModel);
         }
 
@@ -131,19 +131,6 @@ namespace OnlineShop.Controllers
             }
 
             return View(productModel);
-        }
-
-        // GET: Products/Show
-        public async Task<IActionResult> Show(string genre)
-        {
-            var products = await _context.ProductModel.Where(m => m.Name == genre).ToListAsync();
-
-            if (products == null || genre == null)
-            {
-                return NotFound();
-            }
-            ViewData["Genre"] = genre;
-            return View(products);
         }
 
         public async Task<IActionResult> ProductTemplate(int? id)

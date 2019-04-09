@@ -7,7 +7,7 @@
     <div class="productThumbnailContainer col-sm-4" data-productid="@item.Id">
         <h4>@item.Name @item.Description</h4>
         <div class="image">
-            <a href="@Url.Action("ProductTemplate", "AdminAdding", new { id = item.Id })">
+            <a href="@Url.Action("Product", "Product", new { id = item.Id })">
                 <img src="~/images/mały.jpg" class="img-rounded , img-responsive center-block" alt="Cinque Terre" width="304" height="236">
                 <div class="overlay">
                     <div class="info">Get more info</div>
@@ -15,6 +15,6 @@
             </a>
         </div>
         <h5 class="text-center">Cena: @item.Price</h5>
-        <a href="@Url.Action("ProductTemplate", "AdminAdding", new { id = item.Id })" class="btn buy">BUY</a>
+        <a href="@Url.Action("Product", "Product", new { id = item.Id })" class="btn buy">BUY</a>
     </div>
 }
