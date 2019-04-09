@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Models;
 
 namespace OnlineShop.Controllers
 {
+
     public class AccountController : Controller
     {
         private SignInManager<User> _signManager;
@@ -25,6 +27,7 @@ namespace OnlineShop.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
+
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = model.Username };
@@ -50,7 +53,7 @@ namespace OnlineShop.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("MainPage", "Account");
         }
         [HttpGet]
         public IActionResult Login(string returnUrl = "")
@@ -63,9 +66,24 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult Admin()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Manage()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
+
             if (ModelState.IsValid)
             {
                 var result = await _signManager.PasswordSignInAsync(model.Username,
@@ -79,8 +97,13 @@ namespace OnlineShop.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("MainPage", "Account");
+                        if (User.IsInRole("Admin"))
+                            return this.RedirectToAction("Admin", "Account");
+
+                        if (User.IsInRole("Member"))
+                            return this.RedirectToAction("Manage", "Account");
                     }
+                   
                 }
             }
             ModelState.AddModelError("", "Invalid login attempt");

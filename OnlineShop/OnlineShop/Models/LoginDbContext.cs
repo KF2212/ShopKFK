@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Models
 {
-    public class LoginDbContext : IdentityDbContext<User>
+    public class LoginDbContext : IdentityDbContext<User, ApplicationRole, string>
     {
         public LoginDbContext(DbContextOptions<LoginDbContext> options) : base(options)
         {
@@ -16,7 +16,7 @@ namespace OnlineShop.Models
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = LoginDemo; Integrated Security = True;Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True;ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+            optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog=NEW; Integrated Security = True;Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True;ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
         }
     }
 }

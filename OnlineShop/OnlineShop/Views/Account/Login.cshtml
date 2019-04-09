@@ -1,10 +1,13 @@
 ﻿@model OnlineShop.Models.LoginViewModel
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 @{
-    ViewBag.Title = "Login";
+    Layout = "_LayoutLogin";
 }
-@{
-    Layout = "_Layout";
-}
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using OnlineShop.Models
+
 <h2>Login</h2>
 <form method="post" asp-controller="Account" asp-action="Login"
       asp-route-returnurl="@Model.ReturnUrl">

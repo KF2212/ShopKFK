@@ -16,6 +16,5 @@ namespace OnlineShop.Models
         [Display(Name = "Remember Me")]
         public bool RememberMe { get; set; }
         public string ReturnUrl { get; set; }
-
     }
 }
