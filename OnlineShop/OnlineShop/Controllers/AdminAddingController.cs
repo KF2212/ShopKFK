@@ -133,6 +133,39 @@ namespace OnlineShop.Controllers
             return View(productModel);
         }
 
+        // GET: Products/Show
+        public async Task<IActionResult> Show(string genre)
+        {
+            var products = await _context.ProductModel.Where(m => m.Name == genre).ToListAsync();
+
+            if (products == null || genre == null)
+            {
+                return NotFound();
+            }
+            ViewData["Genre"] = genre;
+            return View(products);
+        }
+
+        public async Task<IActionResult> ProductTemplate(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var products = await _context.ProductModel
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (products == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["Title"] = products.Name;
+
+            return View(products);
+        }
+
+
         // POST: AdminAdding/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
