@@ -3,6 +3,7 @@ using OnlineShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace OnlineShop.Migrations
@@ -48,7 +49,8 @@ namespace OnlineShop.Migrations
                 if (result.Succeeded)
                 {
                     await userManager.AddPasswordAsync(user, password);
-                    await userManager.AddToRoleAsync(user, role1);
+                    //await userManager.AddToRoleAsync(user, role1);
+                    await userManager.AddClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(),"Admin"));
                 }
                 adminId1 = user.Id;
             }
@@ -65,7 +67,8 @@ namespace OnlineShop.Migrations
                 if (result.Succeeded)
                 {
                     await userManager.AddPasswordAsync(user, password);
-                    await userManager.AddToRoleAsync(user, role1);
+                    //await userManager.AddToRoleAsync(user, role1);
+                    await userManager.AddClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), role1));
                 }
                 adminId2 = user.Id;
             }
@@ -83,7 +86,8 @@ namespace OnlineShop.Migrations
                 if (result.Succeeded)
                 {
                     await userManager.AddPasswordAsync(user, password);
-                    await userManager.AddToRoleAsync(user, role2);
+                    //await userManager.AddToRoleAsync(user, role2);
+                    await userManager.AddClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), role2));
                 }
             }
 
@@ -100,7 +104,8 @@ namespace OnlineShop.Migrations
                 if (result.Succeeded)
                 {
                     await userManager.AddPasswordAsync(user, password);
-                    await userManager.AddToRoleAsync(user, role2);
+                    //await userManager.AddToRoleAsync(user, role2);
+                    await userManager.AddClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), role2));
                 }
             }
         }

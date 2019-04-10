@@ -64,7 +64,12 @@ namespace OnlineShop.Controllers
 
         public IActionResult MainPage()
         {
-            return View();
+            if (User.IsInRole("Admin"))
+                return this.RedirectToAction("Admin", "Account");
+            else if (User.IsInRole("Member"))
+                return this.RedirectToAction("Manage", "Account");
+            else
+                return View();
         }
 
         [Authorize(Roles = "Admin")]
@@ -96,14 +101,10 @@ namespace OnlineShop.Controllers
                         return Redirect(model.ReturnUrl);
                     }
                     else
-                    {
-                        if (User.IsInRole("Admin"))
-                            return this.RedirectToAction("Admin", "Account");
-
-                        if (User.IsInRole("Member"))
-                            return this.RedirectToAction("Manage", "Account");
+                    {   //if (User.IsInRole("Admin"))
+                        return this.RedirectToAction("MainPage", "Account");
                     }
-                   
+
                 }
             }
             ModelState.AddModelError("", "Invalid login attempt");
