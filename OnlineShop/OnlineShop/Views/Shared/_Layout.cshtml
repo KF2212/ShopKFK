@@ -98,5 +98,24 @@
     @RenderSection("Scripts", required: false)
 
 
-</body>
+
+    <footer>
+        <div class="footer-column">
+            <span class="footer-header">HELP</span>
+            <a asp-controller="Home" asp-action="ContactForm">Contact form</a>
+                <span>Privacy policy and regulations</span>
+</div>
+        <div class="footer-column">
+            <span class="footer-header">INFO ABOUT COMPANY</span>
+            <span>About us</span>
+            <span>Career</span>
+        </div>
+        <div class="footer-column">
+            <span class="footer-header">JOIN NOW</span>
+            <span>Join our site for benefits!</span>
+            <span>Find out more</span>
+        </div>
+    </footer>
+
+    </body>
 </html>

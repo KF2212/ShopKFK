@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using OnlineShop.Models;
 using OnlineShop.Controllers;
 using OnlineShop.Migrations;
+using OnlineShop.Models;
 
 namespace OnlineShop
 {
@@ -42,6 +43,9 @@ namespace OnlineShop
                 .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<OnlineShopContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("OnlineShopContext")));
         }
         public void Configure(IApplicationBuilder app,
             IHostingEnvironment env, LoginDbContext context,
