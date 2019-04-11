@@ -78,7 +78,8 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        [Authorize]
+        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult Manage()
         {
             return View();
