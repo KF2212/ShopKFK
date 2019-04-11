@@ -13,10 +13,15 @@ namespace OnlineShop.Controllers
     [Route("cart")]
     public class ShoppingCartController : Controller
     {
+        private readonly OnlineShopContext _context;
+        public ShoppingCartController(OnlineShopContext context)
+        {
+            _context = context;
+        }
         [Route("")]
         public IActionResult Index()
         {
-            var cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart");
+            var cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItemViewModel>>(HttpContext.Session, "cart");
             ViewBag.cart = cart;
             ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
             return View();
@@ -26,16 +31,16 @@ namespace OnlineShop.Controllers
         public IActionResult Buy(int id)
         {
             //TODO: Get poduct by ID from DB
-            ProductViewModel productViewModel = Program.Products.FirstOrDefault(x => x.Id == id);
+            ProductViewModel productViewModel = ViewModelFactory.MapProductToViewModel(_context.ProductModel.FirstOrDefault(x => x.Id == id));
 
-            List<ShoppingCartItem> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart") ?? new List<ShoppingCartItem>();
+            List<ShoppingCartItemViewModel> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItemViewModel>>(HttpContext.Session, "cart") ?? new List<ShoppingCartItemViewModel>();
             if(cart.Any(x=>x.Product.Id == id))
             {
                 cart.First(x => x.Product.Id == id).Quantity++;
             }
             else
             {
-                cart.Add(new ShoppingCartItem { Product = productViewModel, Quantity = 1 });
+                cart.Add(new ShoppingCartItemViewModel { Product = productViewModel, Quantity = 1 });
             }
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             return RedirectToAction("Index");
@@ -44,8 +49,8 @@ namespace OnlineShop.Controllers
         [Route("remove/{id}")]
         public IActionResult Remove(int id)
         {
-            List<ShoppingCartItem> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItem>>(HttpContext.Session, "cart") ?? new List<ShoppingCartItem>();
-            ShoppingCartItem item = cart.FirstOrDefault(x => x.Product.Id == id);
+            List<ShoppingCartItemViewModel> cart = SessionHelper.GetObjectFromJson<List<ShoppingCartItemViewModel>>(HttpContext.Session, "cart") ?? new List<ShoppingCartItemViewModel>();
+            ShoppingCartItemViewModel item = cart.FirstOrDefault(x => x.Product.Id == id);
             if(item != null)
             {
                 item.Quantity--;

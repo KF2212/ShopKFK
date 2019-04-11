@@ -32,6 +32,12 @@ namespace OnlineShop.Helpers
         {
             return (Enum.GetValues(typeof(T)).Cast<int>().Select(e => new SelectListItem() { Text = Enum.GetName(typeof(T), e), Value = e.ToString() })).ToList();
         }
+
+        public static IEnumerable<SelectListItem> GetEnumSelectList<T>(IEnumerable<T> includedList)
+        {
+            var enumSelectList = includedList.Distinct().Select(e => new SelectListItem() { Text = Enum.GetName(typeof(T), e), Value = e.ToString() }).ToList();
+            return enumSelectList;
+        }
     }
 
 }

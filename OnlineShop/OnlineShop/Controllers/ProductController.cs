@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OnlineShop.Helpers;
 using OnlineShop.Models;
 
 
@@ -20,14 +21,11 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
-
-    /*  [Route("")]
-        [Route("index")]
-        [Route("~/")]*/
+        
         [HttpGet]
         public IActionResult Product(int id)
         {
-            ProductViewModel viewModel = Program.Products.FirstOrDefault(x => x.Id == id);
+            ProductViewModel viewModel = ViewModelFactory.MapProductToViewModel(_context.ProductModel.FirstOrDefault(x => x.Id == id));
             return View(viewModel);
         }
 
@@ -39,9 +37,16 @@ namespace OnlineShop.Controllers
 
         public async Task<IActionResult> Show(string genre)
         {
-            var products = await _context.ProductModel.Where(m => m.Name == genre).ToListAsync();
-
-            if (products == null || genre == null)
+            List<ProductModel> products;
+            if (!string.IsNullOrEmpty(genre))
+            {
+                products = await _context.ProductModel.Where(m => string.Equals(m.Name, genre, StringComparison.InvariantCultureIgnoreCase)).ToListAsync();
+            }
+            else
+            {
+                products = await _context.ProductModel.ToListAsync();
+            }
+            if (products == null)
             {
                 return NotFound();
             }

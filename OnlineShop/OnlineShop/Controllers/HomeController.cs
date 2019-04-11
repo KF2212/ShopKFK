@@ -10,7 +10,7 @@ namespace OnlineShop.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("MainPage");
         }
 
         [Route("MainPage")]

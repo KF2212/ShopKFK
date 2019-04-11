@@ -10,6 +10,7 @@ using OnlineShop.Models;
 using OnlineShop.Controllers;
 using OnlineShop.Migrations;
 using OnlineShop.Models;
+using OnlineShop.Data;
 
 namespace OnlineShop
 {

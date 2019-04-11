@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<OnlineShop.Models.ProductModel>
 
+@{ 
+    Layout = "_Layout";
+}
+
 <h2>@ViewData["Genre"]</h2>
 
 @foreach (var item in Model)

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Models
 {
-    public class ShoppingCartItem
+    public class ShoppingCartItemViewModel
     {
         public int Quantity { get; set; }
         public ProductViewModel Product { get; set; }

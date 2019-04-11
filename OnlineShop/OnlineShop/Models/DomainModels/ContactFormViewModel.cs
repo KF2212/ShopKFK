@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OnlineShop.Models
 {
-    public class ContactForm
+    public class ContactFormViewModel
     {      
         [Required]
         [Display(Name = "Name")]

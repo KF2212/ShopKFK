@@ -6,14 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OnlineShop.Controllers
 {
-    public class AdminAddingController : Controller
+    [Authorize(Roles = "Admin")]
+    public class AdminController : Controller
     {
         private readonly OnlineShopContext _context;
 
-        public AdminAddingController(OnlineShopContext context)
+        public AdminController(OnlineShopContext context)
         {
             _context = context;
         }

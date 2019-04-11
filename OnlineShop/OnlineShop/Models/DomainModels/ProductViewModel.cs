@@ -16,6 +16,7 @@ namespace OnlineShop.Models
             {
                 return EnumHelpers.GetEnumSelectList<Sizes>();
             }
+            set { }
         }
         public int Id { get; set; }
         public string Name { get; set; }
@@ -28,6 +29,7 @@ namespace OnlineShop.Models
             {
                 return EnumHelpers.GetEnumSelectList<Colors>();
             }
+            set { }
         }
     }
 }

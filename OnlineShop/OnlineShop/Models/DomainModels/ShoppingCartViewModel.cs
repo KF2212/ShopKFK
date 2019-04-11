@@ -8,6 +8,6 @@ namespace OnlineShop.Models
     public class ShoppingCartViewModel
     {
         public string ShoppingCartId { get; set; }
-        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public List<ShoppingCartItemViewModel> ShoppingCartItems { get; set; }
     }
 }

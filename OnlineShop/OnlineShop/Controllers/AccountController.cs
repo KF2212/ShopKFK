@@ -65,21 +65,14 @@ namespace OnlineShop.Controllers
         public IActionResult MainPage()
         {
             if (User.IsInRole("Admin"))
-                return this.RedirectToAction("Admin", "Account");
+                return this.RedirectToAction("Index", "Admin");
             else if (User.IsInRole("Member"))
                 return this.RedirectToAction("Manage", "Account");
             else
-                return View();
+                return RedirectToAction("MainPage", "Home");
         }
 
-        [Authorize(Roles = "Admin")]
-        public IActionResult Admin()
-        {
-            return View();
-        }
-
-        //[Authorize]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public IActionResult Manage()
         {
             return View();
@@ -111,5 +104,49 @@ namespace OnlineShop.Controllers
             ModelState.AddModelError("", "Invalid login attempt");
             return View(model);
         }
+
+        //private UserManager<User> _userManager;
+
+        //        public EditUserController(UserManager<User> userManager)
+        //        {
+        //            _userManager = userManager;
+        //        }
+        //        // GET: Products/Edit/5
+        //        public async Task<IActionResult> Edit(int?id)
+        //        {
+        //            if (id== null)
+        //            {
+        //                return NotFound();
+        //            }
+
+        //            var products = await _userManager.;
+        //            if (products == null)
+        //            {
+        //                return NotFound();
+        //            }
+        //            return View(products);
+        //        }
+
+        //        // POST: Products/Edit/5
+        //        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //        [HttpPost]
+        //        [ValidateAntiForgeryToken]
+        //        public async Task<IActionResult> Edit([Bind(Exclude = null)] RegisterViewModel model)
+        //        {
+        //                if (ModelState.IsValid)
+        //                {
+        //                    AUser user = _userManager.FindByIdAsync(model.Id);
+
+        //                    user = new Student
+        //                    {
+        //                        UserName = model.Name,
+        //                        email= model.Surname,
+
+        //                    };
+
+        //                   _userManager.Update(user);
+        //                }
+        //        }
     }
 }
