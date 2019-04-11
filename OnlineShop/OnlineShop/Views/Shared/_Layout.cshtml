@@ -16,7 +16,32 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <style>
+        .footer-column {
+            justify-content: space-between;
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+            width: 20%;
+        }
+
+        .footer-header {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 200px;
+            background: dimgray;
+            color: white;
+            bottom: 0;
+            position: absolute;
+            width: 100%;
+        }
     
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -32,10 +57,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">ONA</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">ON</a></li>
-                    <li><a asp-area="" asp-controller="Login" asp-action="SignUPP">Zarejestruj się</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Main page</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">HER</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">HIS</a></li>
+                    <li><a asp-area="" asp-controller="Login" asp-action="SignUP">Sign up</a></li>
                 </ul>
             </div>
         </div>
@@ -71,5 +96,24 @@
     @RenderSection("Scripts", required: false)
 
 
-</body>
+
+    <footer>
+        <div class="footer-column">
+            <span class="footer-header">HELP</span>
+            <a asp-controller="Home" asp-action="ContactForm">Contact form</a>
+                <span>Privacy policy and regulations</span>
+</div>
+        <div class="footer-column">
+            <span class="footer-header">INFO ABOUT COMPANY</span>
+            <span>About us</span>
+            <span>Career</span>
+        </div>
+        <div class="footer-column">
+            <span class="footer-header">JOIN NOW</span>
+            <span>Join our site for benefits!</span>
+            <span>Find out more</span>
+        </div>
+    </footer>
+
+    </body>
 </html>

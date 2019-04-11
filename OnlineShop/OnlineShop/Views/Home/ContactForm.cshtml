@@ -1,0 +1,42 @@
+﻿@model OnlineShop.Models.ContactForm
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div>
+        @using (@Html.BeginForm())
+        {
+            <fieldset class="ContactForm">
+                <legend>Contact form:</legend>
+                <p>
+                    @Html.LabelFor(m => m.FirstName, new { @class = "contactFieldLabel" })
+                    @Html.TextBoxFor(m => m.FirstName)
+                    @Html.ValidationMessageFor(m => m.FirstName)
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.LastName, new { @class = "contactFieldLabel" })
+                    @Html.TextBoxFor(m => m.LastName)
+                    @Html.ValidationMessageFor(m => m.LastName)
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Email, new { @class = "contactFieldLabel" })
+                    @Html.TextBoxFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email)
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Message, new { @class = "contactFieldLabel" })
+                    @Html.TextBoxFor(m => m.Message)
+                    @Html.ValidationMessageFor(m => m.Message)
+                </p>
+
+            </fieldset>
+
+            <input class="btn btn-lg btn-success" type="submit" value="SEND" />
+        }
+    </div>
+</body>
+</html>
