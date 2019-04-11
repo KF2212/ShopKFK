@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190409203849_secondtry.cs" />
+    <Compile Remove="Migrations\20190409203849_secondtry.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\js\JavaScript.js" />
   </ItemGroup>
 

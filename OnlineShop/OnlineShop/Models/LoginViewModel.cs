@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Models
 {
-    public class RegisterViewModel
+    public class LoginViewModel
     {
-        [Required, MaxLength(256)]
         public string Username { get; set; }
 
-        [Required, DataType(DataType.Password)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [DataType(DataType.Password), Compare(nameof(Password))]
-        public string ConfirmPassword { get; set; }
-
+        [Display(Name = "Remember Me")]
+        public bool RememberMe { get; set; }
+        public string ReturnUrl { get; set; }
     }
 }

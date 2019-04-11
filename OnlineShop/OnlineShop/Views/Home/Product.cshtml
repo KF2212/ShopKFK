@@ -1,0 +1,101 @@
+﻿@model DAL.ViewModels.UserViewModel
+@{
+    Layout = "_Layout";
+}
+<link rel="stylesheet" type="text/css" href="~/css/Product.css">
+<link rel="stylesheet" type="text/javascript" href="~/js/Gallery-Product.js">
+<link rel="stylesheet" type="text/javascript" href="~/css/Login.css">
+
+<body>
+    <div>
+        <div class="col-md-6 description">
+            <div class="container">
+                <h1>Spodnie Jeansy</h1>
+                <h2>Nasze spodnie....</h2>
+                <ol class="punktor">
+                    <li>Nowe</li>
+                    <li>Oryginalne</li>
+                    <li>Posiada metki</li>
+                </ol>
+                <div class="row">
+                    <div class="col-md-6 size">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Rozmiar
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">M</a><br />
+                            <a class="dropdown-item" href="#">L</a><br />
+                            <a class="dropdown-item" href="#">XL</a><br />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="tabela" href="#"><img src="~/images/converse-fashion-footwear-52574.jpg" class="zdj_jak_mierz"><span><img src="~/images/converse-fashion-footwear-52574.jpg" width="498" height="498"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div col-md-6>
+            <div class="gallery">
+                <img src="~/images/shop1-big.jpg" class="gallery-first" alt="">
+                <div class="preview">
+                    <img src="~/images/shop1-small.jpg" class="room-active" alt="">
+                    <img src="~/images/shop2-small.jpg" alt="">
+                    <img src="~/images/shop3-small.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="text-center">
+            <h1>Zobacz podobne</h1>
+        </div>*@
+    <div class="container1">
+        @*<h1 class="text-center">Najczęście kupowane</h1>*@
+        <!-- first product -->
+        <div class="col-md-4 product-grid">
+            <div class="image">
+                <a href="@Url.Action("Jeans", "Login")">
+                    <img src="~/images/mały.jpg" class="img-rounded , img-responsive center-block" alt="Cinque Terre" width="304" height="236">
+                    <div class="overlay">
+                        <div class="info">Get more info</div>
+                    </div>
+                </a>
+            </div>
+            <h4 class="text-center">Shop</h4>
+            <h5 class="text-center">Cena: 50</h5>
+            <a href="@Url.Action("Jeans", "Login")" class="btn buy">BUY</a>
+
+        </div>
+        <!-- second product -->
+
+        <div class="col-md-4 product-grid">
+            <div class="image">
+                <a href="#">
+                    <img src="~/images/black-friday-fashion-friends-1345082.jpg" class="img-rounded , img-responsive center-block" alt="Cinque Terre" width="304" height="236">
+                    <div class="overlay">
+                        <div class="info">Get more info</div>
+                    </div>
+                </a>
+            </div>
+            <h4 class="text-center">Shop</h4>
+            <h5 class="text-center">Cena: 50</h5>
+            <a href="@Url.Action("Login", "Login")" class="btn buy">BUY</a>
+
+        </div>
+        <!-- third product -->
+        <div class="col-md-4 product-grid">
+            <div class="image">
+                <a href="#">
+                    <img src="~/images/black-friday-fashion-friends-1345082.jpg" class="img-rounded , img-responsive center-block" alt="Cinque Terre" width="304" height="236">
+                    <div class="overlay">
+                        <div class="info">Get more info</div>
+                    </div>
+                </a>
+            </div>
+            <h4 class="text-center">Shop</h4>
+            <h5 class="text-center">Cena: 50</h5>
+            <a href="#" class="btn buy">BUY</a>
+
+        </div>
+    </div>
+
+</body>
