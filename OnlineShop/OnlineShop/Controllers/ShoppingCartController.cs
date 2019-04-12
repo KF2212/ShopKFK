@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using OnlineShop.Helpers;
 using Microsoft.AspNetCore.Authorization;
+using OnlineShop.Models.DomainModels;
 
 namespace OnlineShop.Controllers
 {

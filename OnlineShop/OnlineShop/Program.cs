@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using OnlineShop.Models;
+using OnlineShop.Models.DomainModels;
 
 namespace OnlineShop
 {

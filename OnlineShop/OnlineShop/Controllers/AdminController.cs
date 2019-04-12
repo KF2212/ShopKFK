@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using OnlineShop.Models;
+using OnlineShop.Models.DomainModels;
+using OnlineShop.Models.IdentityModels;
 using Microsoft.AspNetCore.Authorization;
+using OnlineShop.Models;
 
 namespace OnlineShop.Controllers
 {

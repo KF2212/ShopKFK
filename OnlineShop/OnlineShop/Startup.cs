@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Identity;
 using OnlineShop.Models;
 using OnlineShop.Controllers;
 using OnlineShop.Migrations;
-using OnlineShop.Models;
 using OnlineShop.Data;
+using OnlineShop.Models.IdentityModels;
 
 namespace OnlineShop
 {

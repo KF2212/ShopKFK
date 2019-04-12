@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Controllers;
 using OnlineShop.Models;
+using OnlineShop.Models.IdentityModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

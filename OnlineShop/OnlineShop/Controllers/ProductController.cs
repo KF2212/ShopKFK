@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Helpers;
 using OnlineShop.Models;
-
+using OnlineShop.Models.DomainModels;
 
 namespace OnlineShop.Controllers
 {

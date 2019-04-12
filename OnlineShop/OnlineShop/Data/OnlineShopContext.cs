@@ -13,6 +13,6 @@ namespace OnlineShop.Models
         {
         }
 
-        public DbSet<OnlineShop.Models.ProductModel> ProductModel { get; set; }
+        public DbSet<OnlineShop.Models.DomainModels.ProductModel> ProductModel { get; set; }
     }
 }

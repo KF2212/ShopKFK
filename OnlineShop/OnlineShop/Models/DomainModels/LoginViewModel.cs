@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Models
+namespace OnlineShop.Models.DomainModels
 {
     public class LoginViewModel
     {
