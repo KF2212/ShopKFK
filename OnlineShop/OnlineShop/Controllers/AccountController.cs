@@ -83,11 +83,15 @@ namespace OnlineShop.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-
+            if ((model.Username == null))
+            {
+                ModelState.AddModelError("", "Invalid login attempt");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 var result = await _signManager.PasswordSignInAsync(model.Username,
-                   model.Password, model.RememberMe, false);
+                   model.Password,model.RememberMe, false);
 
                 if (result.Succeeded)
                 {
@@ -96,7 +100,7 @@ namespace OnlineShop.Controllers
                         return Redirect(model.ReturnUrl);
                     }
                     else
-                    {   //if (User.IsInRole("Admin"))
+                    {
                         return this.RedirectToAction("MainPage", "Account");
                     }
 

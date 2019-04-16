@@ -1,35 +1,39 @@
 ﻿@model OnlineShop.Models.DomainModels.RegisterViewModel
 @using OnlineShop.Models.IdentityModels
-@{
+@*@{
     ViewBag.Title = "Register";
-}
+}*@
 @{
     Layout = "_LayoutRegister";
 }
-<h1>Register</h1>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/Account/LoginRegister.css">
+</head>
+<body>
+    <form method="post" class="box" asp-controller="Account" asp-action="Register">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <h2>Register</h2>
+        <div>
+            @*<label asp-for="Username"></label>*@
+            <input asp-for="Username" class="input" placeholder="Username"/>
+            <span asp-validation-for="Username" ></span>
+        </div>
 
-<form method="post" asp-controller="Account" asp-action="Register">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div>
-        <label asp-for="Username"></label>
-        <input asp-for="Username" />
-        <span asp-validation-for="Username"></span>
-    </div>
+        <div>
+            @*<label asp-for="Password"></label>*@
+            <input asp-for="Password" class="input" placeholder="Password"/>
+            <span asp-validation-for="Password"></span>
+        </div>
 
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
+        <div>
+            @*<label asp-for="ConfirmPassword"></label>*@
+            <input asp-for="ConfirmPassword" class="input" placeholder="Confirm Password"/>
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
 
-    <div>
-        <label asp-for="ConfirmPassword"></label>
-        <input asp-for="ConfirmPassword" />
-        <span asp-validation-for="ConfirmPassword"></span>
-    </div>
+        <div>
+            <input type="submit" class="submit" value="Register" />
+        </div>
 
-    <div>
-        <input type="submit" value="Register" />
-    </div>
-
-</form>
+    </form>
+</body>

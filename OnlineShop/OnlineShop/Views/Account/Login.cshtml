@@ -1,34 +1,37 @@
 ﻿@model OnlineShop.Models.DomainModels.LoginViewModel
 @using OnlineShop.Models.IdentityModels
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using OnlineShop.Models
+
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 @{
     Layout = "_LayoutLogin";
 }
-@using Microsoft.AspNetCore.Identity
-@using System.Security.Claims
-@using OnlineShop.Models
-
-<h2>Login</h2>
-<form method="post" asp-controller="Account" asp-action="Login"
+<head>
+<link rel="stylesheet" type="text/css" href="~/css/Account/LoginRegister.css">
+</head>
+<body>
+<form class="box" method="post" asp-controller="Account" asp-action="Login"
       asp-route-returnurl="@Model.ReturnUrl">
+    <h2>Login</h2>
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div>
-        <label asp-for="Username"></label>
-        <input asp-for="Username" />
+        <input asp-for="Username" class="input" placeholder="Username" />
         <span asp-validation-for="Username"></span>
     </div>
 
     <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" />
+        <input asp-for="Password" class="input" placeholder="Password" />
         <span asp-validation-for="Password"></span>
     </div>
 
     <div>
-        <label asp-for="RememberMe"></label>
-        <input asp-for="RememberMe" />
+        <label asp-for="RememberMe" class="remember"></label>
+        <input asp-for="RememberMe"  />
         <span asp-validation-for="RememberMe"></span>
     </div>
-    <input type="submit" value="Login" />
+    <input type="submit" class="submit" value="Login" />
 </form> 
+</body>
