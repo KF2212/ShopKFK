@@ -8,14 +8,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - IdentityCore</title>
+    <title>@ViewData["Title"] - OnlineShop</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" href="~/css/Login.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -23,29 +23,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    <style>
-        .footer-column {
-            justify-content: space-between;
-            display: flex;
-            flex-direction: column;
-            height: 100px;
-            width: 20%;
-        }
-
-        .footer-header {
-            font-weight: bold;
-            text-align: center;
-        }
-
-        footer {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 200px;
-            background: dimgray;
-            color: white;
-            width: 100%;
-        }
-    </style>
+    @RenderSection("HeadSection", false);
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -57,13 +35,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">IdentityCore</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">OnlineShop</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">ONA</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">ON</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Main page</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">HER</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">HIS</a></li>
                 </ul>
                 @if (SignInManager.IsSignedIn(User))
                 {
@@ -73,7 +51,7 @@
                                 <a asp-area="" asp-controller="Account" asp-action="Manage" title="Manage">Hello @UserManager.GetUserName(User)!</a>
                             </li>
                             <li>
-                                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
+                                <button type="submit" class="btn btn-link navbar-btn navbar-link"><span class="glyphicon glyphicon-log-out"></span>Logout</button>
                             </li>
                         </ul>
                     </form>
@@ -81,8 +59,8 @@
                 else
                 {
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Register"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
                     </ul>
                 }
 
