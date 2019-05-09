@@ -22,7 +22,7 @@ namespace OnlineShop.Models.DomainModels
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Message", Description = "Write your message. We'll contact you as fast as possible.")]
+        [Display(Name = "Write your message. We'll contact you as fast as possible.")]
         public string Message { get; set; }
 
     }

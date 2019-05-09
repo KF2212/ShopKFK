@@ -50,7 +50,7 @@ namespace OnlineShop.Controllers
             }
             return View();
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Logout()
         {
             await _signManager.SignOutAsync();

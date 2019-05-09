@@ -6,37 +6,59 @@
 <!DOCTYPE html>
 
 <html>
+<head>
+    <link rel="stylesheet" href="~/css/Forms.css" />
+</head>
 <body>
     <div>
         @using (@Html.BeginForm())
         {
             <fieldset class="ContactForm">
                 <legend>Contact form:</legend>
-                <p>
-                    @Html.LabelFor(m => m.FirstName, new { @class = "contactFieldLabel" })
-                    @Html.TextBoxFor(m => m.FirstName)
-                    @Html.ValidationMessageFor(m => m.FirstName)
-                </p>
-                <p>
-                    @Html.LabelFor(m => m.LastName, new { @class = "contactFieldLabel" })
-                    @Html.TextBoxFor(m => m.LastName)
-                    @Html.ValidationMessageFor(m => m.LastName)
-                </p>
-                <p>
-                    @Html.LabelFor(m => m.Email, new { @class = "contactFieldLabel" })
-                    @Html.TextBoxFor(m => m.Email)
-                    @Html.ValidationMessageFor(m => m.Email)
-                </p>
-                <p>
-                    @Html.LabelFor(m => m.Message, new { @class = "contactFieldLabel" })
-                    @Html.TextAreaFor(m => m.Message)
-                    @Html.ValidationMessageFor(m => m.Message)
-                </p>
+                <div class="two-column-field">
+                    <div class="two-column-label">
+                        @Html.LabelFor(m => m.FirstName, new { @class = "contactFieldLabel" })
 
+                    </div>
+                    <div class="two-column-editor">
+                        @Html.TextBoxFor(m => m.FirstName)
+                        @Html.ValidationMessageFor(m => m.FirstName)
+                    </div>
+                </div>
+                <div class="two-column-field">
+                    <div class="two-column-label">
+                        @Html.LabelFor(m => m.LastName, new { @class = "contactFieldLabel" })
+                    </div>
+                    <div class="two-column-editor">
+                        @Html.TextBoxFor(m => m.LastName)
+                        @Html.ValidationMessageFor(m => m.LastName)
+                    </div>
+                </div>
+                <div class="two-column-field">
+                    <div class="two-column-label">
+                        @Html.LabelFor(m => m.Email, new { @class = "contactFieldLabel" })
+                    </div>
+                    <div class="two-column-editor">
+                        @Html.TextBoxFor(m => m.Email)
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="two-column-field">
+                    <div class="two-column-label">
+                        @Html.LabelFor(m => m.Message, new { @class = "contactFieldLabel" })
+                    </div>
+                    <div class="two-column-editor">
+                        @Html.TextAreaFor(m => m.Message, new { maxlength = 350, style="width: 500px; height: 200px;" })
+                        <span class="textarea">
+                        @Html.ValidationMessageFor(m => m.Message)
+                        </span>
+                        <span id="messageLetterCounter"></span>
+                    </div>
+                </div>
             </fieldset>
-
-            <input class="btn btn-lg btn-success" type="submit" value="SEND" />
+            <input class="btn button-submit" type="submit" value="SEND" />
         }
     </div>
+    <script type="text/javascript" src="~/js/ContactForm.js"></script>
 </body>
 </html>

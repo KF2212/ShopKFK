@@ -1,0 +1,36 @@
+﻿.ContactForm {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.two-column-field {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.two-column-label {
+    width: 200px;
+    float: left;
+}
+
+.two-column-editor {
+    width: 300px;
+    float: left;
+}
+
+.button-submit {
+    color: white;
+    border: 1px solid #003939;
+    background-color: #003939;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 0;
+    width: 200px;
+}
+
+.button-submit:hover {
+    background-color: #397373;
+    color: #fff;
+    border: 1px solid #003939;
+}

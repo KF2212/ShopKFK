@@ -2,11 +2,16 @@
 @using OnlineShop.Models.IdentityModels;
 @model List<ProductViewModel>
 
-<div class="container1">
-    @foreach (var product in Model)
-    {
-        <div class="col-md-4 product-grid">
-            @Html.Partial("~/Views/Product/_ProductThumbnail.cshtml", product)
-        </div>
-    }
-</div>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/SuggestedProducts.css">
+</head>
+<body>
+    <div class="suggested-products-container">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4 product-grid">
+                @Html.Partial("~/Views/Product/_ProductThumbnail.cshtml", product)
+            </div>
+        }
+    </div>
+</body>
