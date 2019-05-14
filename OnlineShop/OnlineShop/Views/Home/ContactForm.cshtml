@@ -29,7 +29,7 @@
                 </p>
                 <p>
                     @Html.LabelFor(m => m.Message, new { @class = "contactFieldLabel" })
-                    @Html.TextBoxFor(m => m.Message)
+                    @Html.TextAreaFor(m => m.Message)
                     @Html.ValidationMessageFor(m => m.Message)
                 </p>
 

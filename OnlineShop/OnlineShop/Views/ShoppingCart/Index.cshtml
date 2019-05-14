@@ -7,32 +7,32 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Twój koszyk</title>
+    <title>Shopping cart</title>
 </head>
 <body>
 
-    <h3>Twój koszyk</h3>
+    <h3>Your shopping cart</h3>
     <br>
     <br>
     <table class="table table-bordered">
         <tr>
-            <th>Option</th>
             @*<th>Id</th>*@
             <th>Name</th>
             @*<th>Photo</th>*@
             <th>Price</th>
             <th>Quantity</th>
+            <th>Option</th>
             <th>Sub Total</th>
         </tr>
         @foreach (var item in ViewBag.cart)
         {
         <tr>
-            <td><a asp-controller="ShoppingCart" asp-action="Remove" asp-route-id="@item.Product.Id"><input type="button" class="btn btn-default" value="Usuń" /></a></td>
             @*<td>@item.Product.Id</td>*@
             <td>@item.Product.Name</td>
             @*<td><img src="~/images/@item.Product.Photo" width="60" /> </td>*@
             <td>@item.Product.Price</td>
             <td>@item.Quantity</td>
+            <td><a asp-controller="ShoppingCart" asp-action="Remove" asp-route-id="@item.Product.Id"><input type="button" class="btn btn-default" value="Delete" /></a></td>
             <td>@(item.Product.Price * item.Quantity)</td>
         </tr>
         }
@@ -45,10 +45,10 @@
     </table>
     <br>
     <div>
-        <a asp-controller="Home" asp-action="MainPage"><input type="button" class="btn btn-default" value="Kontynuuj zakupy" /></a>
+        <a asp-controller="Home" asp-action="MainPage"><input type="button" class="btn btn-default" value="Continue shopping" /></a>
     </div>
     <div>
-        <h3 class="text-center">Mogą cię również zainteresować:</h3>
+        <h3 class="text-center">You can also like:</h3>
         @await Component.InvokeAsync("SuggestedProducts")
     </div>
 
