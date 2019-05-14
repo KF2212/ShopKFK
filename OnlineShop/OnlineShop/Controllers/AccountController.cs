@@ -13,8 +13,8 @@ namespace OnlineShop.Controllers
 
     public class AccountController : Controller
     {
-        private SignInManager<User> _signManager;
-        private UserManager<User> _userManager;
+        private readonly SignInManager<User> _signManager;
+        private readonly UserManager<User> _userManager;
         public AccountController(UserManager<User> userManager, SignInManager<User> signManager)
         {
             _userManager = userManager;

@@ -13,7 +13,7 @@
             <div class="select-product-container">
                 @Html.HiddenFor(model => model.Id)
                 <h1>@Model.Name</h1>
-                <h3>@Model.Price pln</h3>
+                <h3>@Model.Price.ToString("C")</h3>
                 @Html.DropDownListFor(model => model.Size, Model.SizeSelectList, "Please select")
                 @Html.DropDownListFor(model => model.Color, Model.ColorSelectList, "Please select")
                 <input class="button-add" type="button" value="Add to cart" onclick="AddToCart()" />

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Migrations
 {
-    public class AdminData
+    public class AdminData  //TO JEST MIGRACJA?
     {
         public static async Task Initialize(LoginDbContext context,
                               UserManager<User> userManager,

@@ -10,6 +10,6 @@
             </div>
         </a>
     </div>    
-    <h5 class="text-center">Price: @Model.Price</h5>
+    <h5 class="text-center">Price: @Model.Price.ToString("C")</h5>
     <a href="@Url.Action("Product", "Product", new { id = Model.Id })" class="btn buy">BUY NOW</a>
 </div>
